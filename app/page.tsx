@@ -1,8 +1,9 @@
-export default function Home() {
+import SignUpForm from './components/organisms/SignUpForm/SignUpForm';
+
+export default function SignUp() {
   return (
     <>
-      <h1 className="bg-green-500">asdasd</h1>
-      <div>asd</div>
+      <SignUpForm />
     </>
   );
 }

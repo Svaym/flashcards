@@ -7,7 +7,10 @@
     "airbnb-typescript"
   ],
   "rules": {
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "linebreak-style": "off",
+    "@typescript-eslint/quotes": "off",
+    "@typescript-eslint/space-before-blocks": "off"
   },
   "parserOptions": {
     "project": ["./tsconfig.json"]
