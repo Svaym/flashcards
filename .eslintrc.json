@@ -1,7 +1,15 @@
 {
-  "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended", "airbnb",
-    "airbnb/hooks", "airbnb-typescript"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb",
+    "airbnb/hooks",
+    "airbnb-typescript"
+  ],
   "rules": {
     "react/react-in-jsx-scope": "off"
+  },
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
   }
 }
