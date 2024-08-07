@@ -10,8 +10,10 @@
     "react/react-in-jsx-scope": "off",
     "linebreak-style": "off",
     "@typescript-eslint/quotes": "off",
+    "@typescript-eslint/semi": "off",
     "@typescript-eslint/space-before-blocks": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off"
   },
   "parserOptions": {
     "project": ["./tsconfig.json"]

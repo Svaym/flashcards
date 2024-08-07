@@ -2,7 +2,7 @@ import { ChildrenProps } from '@/app/interfaces/interface';
 
 interface ButtonProps extends ChildrenProps {
   type: 'submit' | 'button' | 'reset';
-  mt: string;
+  mt?: string;
   onClick?: () => void;
 }
 

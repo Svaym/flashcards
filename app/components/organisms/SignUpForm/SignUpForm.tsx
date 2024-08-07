@@ -57,7 +57,7 @@ export default function SignUpForm() {
     dispatch({ type: FORM_ACTIONS.setPassword, payload: { password: event.target.value } });
   }
   return (
-    <section className="flex h-screen items-center justify-center bg-gray-200">
+    <section className="flex h-screen items-center justify-center">
       <form
         className="flex w-4/5 flex-col gap-y-2 rounded-md bg-white p-2 sm:w-1/2 md:w-[35%] xl:w-1/4"
         onSubmit={handleSubmit(onSubmit)}
