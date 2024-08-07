@@ -13,7 +13,8 @@
     "@typescript-eslint/semi": "off",
     "@typescript-eslint/space-before-blocks": "off",
     "react/jsx-props-no-spreading": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": false, "optionalDependencies": false, "peerDependencies": false}]
   },
   "parserOptions": {
     "project": ["./tsconfig.json"]

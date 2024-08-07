@@ -1,13 +1,14 @@
+import { X } from 'lucide-react';
+
 import { ChildrenProps } from '@/app/interfaces/interface';
-import { X } from 'lucide-react'
 
 interface ModalProps extends ChildrenProps {
-  opened: boolean,
-  close: () => void
+  opened: boolean;
+  close: () => void;
 }
 export default function Modal({ children, opened, close }: ModalProps) {
   if (!opened) {
-    return null
+    return null;
   }
   return (
     <div className="fixed inset-0 z-50 bg-gray-800 bg-opacity-75">
