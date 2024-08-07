@@ -1,5 +1,9 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import { Toaster, toast } from 'sonner';
+
+import { useReducer } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import Button from '../../atoms/Button/Button';
@@ -12,25 +16,57 @@ interface FormInput {
 }
 
 export default function SignUpForm() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     watch,
-    reset,
     formState: { errors },
   } = useForm<FormInput>();
-  const onSubmit: SubmitHandler<FormInput> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<FormInput> = (data) => {
+    console.log(data);
+    toast.success(`${data.name}, аккаунт зарегистрирован!`);
+    router.push('/home');
+  };
+  const initialState = {
+    name: '',
+    password: '',
+  };
+  const FORM_ACTIONS = {
+    setName: 'setName',
+    setPassword: 'setPassword',
+  };
+  const [state, dispatch] = useReducer(reducer, initialState);
 
+  function reducer(state, action) {
+    switch (action.type) {
+      case 'setName':
+        return { ...state, name: action.payload.name };
+      case 'setPassword':
+        return { ...state, password: action.payload.password };
+      default:
+        return state;
+    }
+  }
+
+  function onNameChange(event: React.ChangeEvent<HTMLInputElement>) {
+    dispatch({ type: FORM_ACTIONS.setName, payload: { name: event.target.value } });
+  }
+
+  function onPasswordChange(event: React.ChangeEvent<HTMLInputElement>) {
+    dispatch({ type: FORM_ACTIONS.setPassword, payload: { password: event.target.value } });
+  }
   return (
     <section className="flex h-screen items-center justify-center bg-gray-200">
       <form
-        className="flex w-4/5 flex-col gap-y-2 rounded-md bg-white p-2"
+        className="flex w-4/5 flex-col gap-y-2 rounded-md bg-white p-2 sm:w-1/2 md:w-[35%] xl:w-1/4"
         onSubmit={handleSubmit(onSubmit)}
       >
         <h2 className="text-center text-xl">Регистрация</h2>
         <input
           className="mt-2 rounded-md border-2 border-gray-400 bg-gray-300 px-2 py-1 text-black outline-none transition-all duration-300 ease-linear focus:bg-gray-100"
           placeholder="Введите имя"
+          onChange={onNameChange}
           {...register('name', { required: true, maxLength: 20 })}
         />
         {errors.name && errors.name.type === 'required' && (
@@ -43,6 +79,7 @@ export default function SignUpForm() {
           className="rounded-md border-2 border-gray-400 bg-gray-300 px-2 py-1 text-black outline-none transition-all duration-300 ease-linear focus:bg-gray-100"
           placeholder="Пароль"
           type="password"
+          onChange={onPasswordChange}
           {...register('password', {
             required: true,
             minLength: 6,
@@ -81,10 +118,11 @@ export default function SignUpForm() {
         {errors.checkPassword && errors.checkPassword.type === 'validate' && (
           <Error>Пароли не совпадают</Error>
         )}
-        <Button onClick={() => console.log(123)} mt="mt-2" type="submit">
+        <Button mt="mt-2" type="submit">
           Зарегистрироваться
         </Button>
       </form>
+      <Toaster position="top-right" expand={true} closeButton richColors />
     </section>
   );
 }

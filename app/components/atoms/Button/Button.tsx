@@ -3,7 +3,7 @@ import { ChildrenProps } from '@/app/interfaces/interface';
 interface ButtonProps extends ChildrenProps {
   type: 'submit' | 'button' | 'reset';
   mt: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export default function Button({ children, type, mt, onClick }: ButtonProps) {
