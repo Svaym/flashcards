@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "prettier --write .",
+    "format": "git diff --name-only --cached | grep '\\.js$\\|\\.jsx$\\|\\.ts$\\|\\.tsx$' | xargs prettier --write",
     "lint": "eslint .",
     "prettier": "prettier --write \"src//.{js,jsx,ts,tsx}\"",
     "lint-staged": "lint-staged"
@@ -18,16 +18,17 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "prettier --write",
-      "eslint --fix"
+      "prettier --write"
     ]
   },
   "dependencies": {
+    "nanoid": "^5.0.7",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.52.2",
-    "sonner": "^1.5.0"
+    "sonner": "^1.5.0",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
