@@ -8,6 +8,6 @@ export interface ModalBasicProps {
   close: () => void;
 }
 export interface DeckBasicProps {
-  id: string,
-  name: string
+  id: string;
+  name: string;
 }

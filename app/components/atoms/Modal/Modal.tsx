@@ -13,7 +13,10 @@ export default function Modal({ children, opened, close }: ModalProps) {
   return (
     <div className="fixed inset-0 z-50 bg-gray-800 bg-opacity-75">
       <div className="fixed left-1/2 top-1/2 z-50 w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-md bg-gray-200 p-5">
-        <X onClick={close} />
+        <X
+          onClick={close}
+          className="ml-auto block cursor-pointer transition duration-300 ease-linear hover:stroke-red-300"
+        />
         {children}
       </div>
     </div>

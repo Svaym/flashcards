@@ -24,7 +24,6 @@ export default function SignUpForm() {
     formState: { errors },
   } = useForm<FormInput>();
   const onSubmit: SubmitHandler<FormInput> = (data) => {
-    console.log(data);
     toast.success(`${data.name}, аккаунт зарегистрирован!`);
     router.push('/home');
   };

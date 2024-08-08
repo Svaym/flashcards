@@ -11,7 +11,7 @@ export default function Input({ value, onChange, placeholder, mx }: InputProps) 
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      className={`${mx} mt-2 rounded-md border-2 border-gray-400 bg-gray-300 px-2 py-1 text-black outline-none transition-all duration-300 ease-linear focus:bg-gray-100`}
+      className={`${mx} mt-2 w-full rounded-md border-2 border-gray-400 bg-gray-300 px-[6px] py-1 text-black outline-none transition-all duration-300 ease-linear focus:bg-gray-100 xs:px-2`}
     />
   );
 }

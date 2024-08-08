@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "git diff --name-only --cached | grep '\\.js$\\|\\.jsx$\\|\\.ts$\\|\\.tsx$' | xargs prettier --write",
+    "format": "prettier --write .",
     "lint": "eslint .",
     "prettier": "prettier --write \"src//.{js,jsx,ts,tsx}\"",
     "lint-staged": "lint-staged"

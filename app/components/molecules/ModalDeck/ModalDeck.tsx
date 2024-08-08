@@ -1,10 +1,13 @@
+import { nanoid } from 'nanoid';
+
 import { useState } from 'react';
+
 import { ModalBasicProps } from '@/app/interfaces/interface';
 import { useDeckStore } from '@/app/lib/store';
+
+import Button from '../../atoms/Button/Button';
 import Input from '../../atoms/Input/Input';
 import Modal from '../../atoms/Modal/Modal';
-import Button from '../../atoms/Button/Button';
-import { nanoid } from 'nanoid';
 
 export default function ModalDeck({ opened, close }: ModalBasicProps) {
   const addDeck = useDeckStore((state) => state.addDeck);
