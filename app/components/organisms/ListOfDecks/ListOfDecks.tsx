@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import { useState } from 'react';
 
-import { useDeckStore } from '@/app/lib/store';
+import { useDeckStore, useNameDeckStore } from '@/app/lib/store';
 
 import Button from '../../atoms/Button/Button';
 import Container from '../../atoms/Container/Container';
@@ -16,6 +16,7 @@ export default function ListOfDecks() {
   const [modalOpen, setModalOpen] = useState(false);
   const decks = useDeckStore((state) => state.decks);
   const removeDeck = useDeckStore((state) => state.removeDeck);
+  const updateDeck = useNameDeckStore((state) => state.updateDeck);
   return (
     <section className="bg-gray-200">
       <Container>
@@ -26,7 +27,7 @@ export default function ListOfDecks() {
               className="flex items-center justify-between rounded-md p-2 outline outline-2 outline-indigo-300"
             >
               <Link href={`/deck/${deck.name}`}>
-                <Title>{deck.name}</Title>
+                <Title onClick={() => updateDeck(deck.name)}>{deck.name}</Title>
               </Link>
               <Trash2
                 onClick={() => removeDeck(deck.id)}
