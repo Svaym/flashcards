@@ -17,10 +17,18 @@ export default function ModalDeck({ opened, close }: ModalBasicProps) {
     addDeck({ id: nanoid(), name: newName });
     setDeck('');
   }
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>, newName: string) {
+    if (e.key === 'Enter' && deck.length !== 0) {
+      e.preventDefault();
+      addDeck({ id: nanoid(), name: newName });
+      setDeck('');
+    }
+  }
 
   return (
     <Modal opened={opened} close={close}>
       <Input
+        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => handleKeyDown(e, deck)}
         placeholder="Название колоды"
         value={deck}
         mx="block mx-auto"

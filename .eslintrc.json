@@ -9,6 +9,7 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "linebreak-style": "off",
+    "object-curly-newline": "off",
     "@typescript-eslint/quotes": "off",
     "@typescript-eslint/semi": "off",
     "@typescript-eslint/space-before-blocks": "off",

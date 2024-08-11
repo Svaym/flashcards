@@ -19,7 +19,6 @@ export default function ListOfCards() {
           <div className="bg-purple-500">
             <h2>{card.word}</h2>
             <h2>{card.translatedWord}</h2>
-            <h2>{card.nameDeck}</h2>
           </div>
         ))}
       </div>

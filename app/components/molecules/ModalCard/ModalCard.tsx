@@ -14,6 +14,19 @@ export default function ModalCard({ opened, close }: ModalBasicProps) {
   const deck = useNameDeckStore((state) => state.deck);
   const [word, setWord] = useState('');
   const [translatedWord, settranslatedWord] = useState('');
+  function handleKeyDown(
+    e: React.KeyboardEvent<HTMLInputElement>,
+    newWord: string,
+    newTrasnaltedWord: string,
+    title: string,
+  ) {
+    if (e.key === 'Enter' && word.length !== 0 && translatedWord.length !== 0) {
+      e.preventDefault();
+      addCard({ id: nanoid(), word: newWord, translatedWord: newTrasnaltedWord, nameDeck: title });
+      setWord('');
+      settranslatedWord('');
+    }
+  }
   function handleClick(newWord: string, newTrasnaltedWord: string, title: string) {
     addCard({ id: nanoid(), word: newWord, translatedWord: newTrasnaltedWord, nameDeck: title });
     setWord('');
@@ -22,12 +35,18 @@ export default function ModalCard({ opened, close }: ModalBasicProps) {
   return (
     <Modal opened={opened} close={close}>
       <Input
+        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
+          handleKeyDown(e, word, translatedWord, deck)
+        }
         placeholder="Слово на лицевой стороне"
         value={word}
         mx="block mx-auto"
         onChange={(event) => setWord(event.target.value)}
       />
       <Input
+        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
+          handleKeyDown(e, word, translatedWord, deck)
+        }
         placeholder="Слово на обороте карты"
         value={translatedWord}
         mx="block mx-auto"
