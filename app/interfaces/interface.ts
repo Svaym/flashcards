@@ -14,6 +14,7 @@ export interface DeckBasicProps {
 export interface CardBasicProps {
   id: string;
   word: string;
+  isShow: false;
   translatedWord: string;
   nameDeck: string;
 }
